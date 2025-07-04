@@ -1,2 +1,3 @@
 # sales-dashboard-project
-📊 Analyzing monthly sales trends and revenue using pandas and matplotlib.
+📊 My first sales analysis project: from raw CSV to charts using Python.
+
