@@ -60,3 +60,33 @@ plt.ylabel("Units Sold")
 plt.grid(True)
 plt.tight_layout()
 plt.show()
+
+#total revenue by product
+df.groupby("product")["revenue"].sum()
+
+#sort products by revenue
+df.groupby("product")["revenue"].sum().sort_values(ascending=False)
+product_revenue = df.groupby("product")["revenue"].sum().sort_values(ascending=False)
+
+#plotting bar chart for product revenue
+product_revenue.plot(kind="bar", color="royalblue", figsize=(10, 5))
+plt.title("💰 Revenue by Product")
+plt.xlabel("Product")
+plt.ylabel("Total Revenue (₹)")
+plt.grid(axis='y')
+plt.tight_layout()
+plt.show()
+
+"""**REVENUE BY CATEGORY**"""
+
+category_revenue = df.groupby("category")["revenue"].sum().sort_values(ascending=False)
+
+#CHART
+
+category_revenue.plot(kind="bar", color="darkorange", figsize=(8, 5))
+plt.title("💰 Revenue by Category")
+plt.xlabel("Category")
+plt.ylabel("Total Revenue (₹)")
+plt.grid(axis='y')
+plt.tight_layout()
+plt.show()
