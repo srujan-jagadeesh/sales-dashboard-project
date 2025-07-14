@@ -10,7 +10,7 @@ Milestone 7: Sales Dashboard Project
 """
 
 import pandas as pd
-df = pd.read_csv('/sales_data.csv')
+df = pd.read_csv('../sales_data.csv')
 #data table check
 df.head()
 
@@ -25,3 +25,38 @@ df.set_index("date",inplace=True)
 
 #format verification
 df.head()
+
+# Group the data by month and sum the revenue
+monthly_revenue = df["revenue"].resample("M").sum()
+
+#group the data by month and sum the quantity
+monthly_quantity = df["quantity"].resample("M").sum()
+
+#month wise quantity and month wise revenue
+print("📈Monthly revenue : ")
+print(monthly_revenue)
+print("\n📦Monthly quantity : ")
+print(monthly_quantity)
+
+#visualization of data using matplotlib
+import matplotlib.pyplot as plt
+
+plt.style.use("seaborn-v0_8-darkgrid") # Changed to a valid seaborn style
+plt.figure(figsize=(10,5))
+monthly_revenue.plot(marker='o', color="royalblue")
+plt.title("📈Monthly Revenue Trend")
+plt.xlabel("Month")
+plt.ylabel("Revenue ($)")
+plt.grid(True)
+plt.tight_layout()
+plt.show()
+
+#graph of monthly quantity sold
+plt.figure(figsize=(10, 5))
+monthly_quantity.plot(marker='s', color='seagreen')
+plt.title("📦 Monthly Quantity Sold")
+plt.xlabel("Month")
+plt.ylabel("Units Sold")
+plt.grid(True)
+plt.tight_layout()
+plt.show()
